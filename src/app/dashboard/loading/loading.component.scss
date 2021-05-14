@@ -1,0 +1,27 @@
+@import "../../app.component.scss";
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+
+  .loader {
+    border: 10px solid $lightDark; /* Light grey */
+    border-top: 10px solid $primary; /* Blue */
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1.5s linear infinite;
+  }
+
+  span {
+    padding-top: 1rem;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+}

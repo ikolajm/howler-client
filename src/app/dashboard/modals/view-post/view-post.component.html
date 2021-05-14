@@ -1,0 +1,147 @@
+<!-- Head -->
+<div mat-dialog-title>
+  <h1>View Post</h1>
+  <!-- Back to top button/close -->
+  <div>
+    <button id="dialogBackToTopButton" (click)="backToTop()">
+      Back to top 
+      <span class="material-icons">
+        arrow_upward
+        </span>
+    </button>
+    <span (click)="close()" class="material-icons">
+      close
+    </span>
+  </div>
+</div>
+<!-- Body -->
+<div (scroll)="backToTopCheck()" mat-dialog-content>
+  <!-- Loading -->
+  <div *ngIf="loading; else post">
+    <h1 class="loading-prefix">Retrieving Post...</h1>
+    <app-loading></app-loading>
+  </div>
+  <!-- Content -->
+  <ng-template #post>
+    <div>
+      <h1>Post:</h1>
+      <!-- Post Details -->
+      <div class="post">
+
+        <!-- Avatar -->
+        <div class="userContainer">
+          <div class="profile">
+            <div [ngStyle]="{'background': userBackground}" class="background">
+              <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+            </div>
+          </div>
+        </div>
+      
+        <!-- Post content -->
+        <div class="postContent">
+          <div class="meta">
+            <div>
+              <div (click)="openPreviewAuthorDialog()" class="previewUser">
+                <h1>{{name}}</h1>
+                <h1>@{{username}}</h1>
+              </div>
+              <span>{{createdAt}}</span>
+            </div>
+          </div>
+          <!-- Edit/Delete -->
+          <span *ngIf="isAuthor">
+            <span (click)="openEditDialog()" class="editIcon material-icons">
+              edit
+            </span>
+          </span>
+          <!-- Post Content -->
+          <div class="content">
+            <span *ngIf="edited" class="editedContent">[EDITED]</span>
+            {{content}}
+          </div>
+          
+          <!-- Like/Comment Buttons -->
+          <div class="postButtonGroup">
+            
+            <!-- Liked -->
+            <div class="likeContainer" *ngIf="likedByUser; else notLikedByUser">
+              <span (click)="unlikePost()" class="material-icons liked">
+                favorite
+              </span>
+              <span *ngIf="likes === 1">
+                {{likes}} like
+              </span>
+              <span *ngIf="likes > 1">
+                {{likes}} likes
+              </span>
+            </div>
+            <!-- Not Liked -->
+            <ng-template #notLikedByUser>
+              <div class="likeContainer">
+                <span (click)="likePost()" class="material-icons">
+                  favorite
+                </span>
+                <span *ngIf="likes === 1">
+                  {{likes}} like
+                </span>
+                <span *ngIf="likes > 1">
+                  {{likes}} likes
+                </span>
+              </div>
+            </ng-template>
+        
+            <!-- Comment -->
+            <div class="commentContainer">
+              <!-- Commented -->
+              <span *ngIf="commentedByUser; else notCommented" class="material-icons commented">
+                chat
+              </span>
+              <span *ngIf="comments === 1">
+                {{comments}} comment
+              </span>
+              <span *ngIf="comments > 1">
+                {{comments}} comments
+              </span>
+              <!-- Not Commented -->
+              <ng-template #notCommented>
+                <span class="material-icons">
+                  chat
+                </span>
+                <span *ngIf="comments === 1">
+                  {{comments}} comment
+                </span>
+                <span *ngIf="comments > 1">
+                  {{comments}} comments
+                </span>
+              </ng-template>
+            </div>
+          </div> <!-- End Like/Comment -->
+        </div>
+
+
+      </div> <!-- End Post Details-->
+      
+      <!-- Create Comment -->
+      <div class="commentCreation">
+        <div class="form-group">
+          <span class="contentLabelGroup">
+            <label for="content">Leave a comment:</label>
+            <span>{{commentContent.length}}/150</span>
+          </span>
+          <textarea [(ngModel)]="commentContent" class="form-control"></textarea>
+        </div>
+        <button (click)="postComment()" class="confirmationButton">Post Comment</button>
+      </div>
+
+      <!-- Comments -->
+      <!-- Line Break -->
+      <hr>
+      <!-- Comment Loop -->
+      <h1>Comments ({{comments}}):</h1>
+      <div class="commentLoopContainer">
+        <app-comment *ngFor="let comment of commentData" [comment]="comment"></app-comment>
+      </div>
+
+    </div> <!-- End Post -->
+  </ng-template>
+</div>

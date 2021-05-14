@@ -1,0 +1,30 @@
+<!-- Header with search and filter -->
+<div class="header">
+  <h1>Liked Posts</h1>
+  <button id="backToTopButton" (click)="backToTop()">
+    Back to top 
+    <span class="material-icons">
+      arrow_upward
+      </span>
+  </button>
+</div>
+<div (scroll)="backToTopCheck()" class="newsfeed">
+
+  <!-- Loading -->
+  <div *ngIf="loading; else newsfeed">
+    <h1 class="loading-prefix">Retrieving Likes</h1>
+    <app-loading></app-loading>
+  </div>
+
+  <!-- Newsfeed -->
+  <ng-template #newsfeed>
+    <div class="data">
+      
+      <!-- Map posts -->
+      <div *ngFor="let post of data">
+        <app-post [post]="post"></app-post>
+      </div>
+
+    </div>
+  </ng-template>
+</div>

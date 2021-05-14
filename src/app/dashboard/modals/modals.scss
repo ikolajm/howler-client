@@ -1,0 +1,113 @@
+@import "../../app.component.scss";
+
+::ng-deep.mat-dialog-container {
+    background: $lightDark !important;
+    color: $white;
+    border: 2px solid $white;
+    padding: 0rem;
+    margin: 0 auto;
+    height: 355px;
+
+    // Header
+    .mat-dialog-title {
+        padding: 1rem;
+        border-bottom: 2px solid $white;
+        margin-bottom: 0rem;
+        font-size: 2.75rem;
+    }
+
+    // Body
+    .mat-dialog-content {
+        padding: 2rem;
+        margin: 0rem;
+        
+        // Input
+        .contentLabelGroup {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            label {
+                font-size: 1.75rem;
+            }
+            
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: bold;
+        }
+
+        // Privacy Options
+        .privacyOptions {
+            .buttons {
+                display: flex;
+                justify-content: space-between;
+
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    transition: .3s;
+                    cursor: pointer;
+
+                    span {
+                        margin-right: 5px;
+                    }
+
+                    &:first-of-type {
+                        margin-right: 10px;
+                    }
+
+                    &:hover, &:focus {
+                        color: $primary;
+                    }
+                }
+
+                .activeIcon {
+                    color: $primary !important;
+                }
+            }
+        }
+
+    }
+
+    // Footer
+    .mat-dialog-actions {
+        padding: 2rem;
+        border-top: 2px solid $white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            display: inline-block;
+            min-width: 100px;
+            color: $white;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            padding: .75rem .5rem;
+            transition: .3s;
+            font-size: 1.5rem;
+
+            
+        }
+
+        .cancelButton {
+            background: $dark;
+
+            &:hover {
+                color: $darkWhite;
+            }
+        }
+
+        .confirmButton {
+            background: $primary;
+            &:hover {
+                color: $darkWhite;
+                background: $darkPrimary;
+            }
+        }
+    }
+}
+

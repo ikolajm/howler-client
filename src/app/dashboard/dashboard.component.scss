@@ -1,0 +1,33 @@
+@import "../app.component.scss";
+
+
+.dashboard {
+    overflow-y: hidden;
+
+    .contentContainer {
+        color: $white;
+        margin-left: 250px;
+        //margin-top: -20px;
+    
+        .content {
+            width: 70%;
+            height: 100vh;
+            margin: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .contentContainer {
+        margin-left: 100px !important;
+        .content {
+            width: 100% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .content {
+        width: 90% !important;
+    }
+}

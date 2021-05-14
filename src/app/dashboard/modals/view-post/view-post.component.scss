@@ -1,0 +1,97 @@
+@import "../modals.scss";
+@import "../../../app.component.scss";
+@import "../../posts/post/post.component.scss";
+
+::ng-deep .viewPostModal {
+    .mat-dialog-container {
+        height: auto;
+        max-height: 90vh;
+        overflow-y: none;
+        .mat-dialog-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 2rem;
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            div {
+                display: flex;
+                align-items: center;
+
+                #dialogBackToTopButton {
+                    background: $primary;
+                    color: $white;
+                    border-radius: 3px;
+                    outline: none;
+                    border: none;
+                    transition: .3s;
+                    font-size: 1.5rem;
+                    opacity: 0;
+                    transition: .3s;
+            
+                    &:hover  {
+                        background: $darkPrimary;
+                        color: $darkWhite;
+                    }
+                }
+
+                span {
+                    margin-left: 10px;
+                    font-size: 3rem;
+                    cursor: pointer;
+                    color: $white;
+
+                    &:hover {
+                        color: $darkWhite;
+                    }
+                }
+            }
+        }
+
+        .mat-dialog-content {
+            h1 {
+                &:first-of-type {
+                    margin-top: 0rem;
+                }
+            }
+
+            .post {
+                padding: 1rem;
+                align-items: center;
+                border: 2px solid #f5feff73;
+                position: relative;
+            }
+
+            .commentCreation {
+                margin-top: 1rem;
+
+                .confirmationButton {
+                    background: $primary;
+                    color: $white;
+                    border-radius: 3px;
+                    outline: none;
+                    border: none;
+                    transition: .3s;
+                    font-size: 1.5rem;
+                    transition: .3s;
+            
+                    &:hover  {
+                        background: $darkPrimary;
+                        color: $darkWhite;
+                    }
+                }
+            }
+        }
+        .commentLoopContainer {
+            display: flex;
+            flex-direction: column-reverse;
+            .comment {
+                margin-top: 10px;
+            }
+        }
+        
+    }
+}

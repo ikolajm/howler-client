@@ -1,0 +1,94 @@
+<div id="{{post.id}}" class="post">
+  <!-- Avatar -->
+  <div class="userContainer">
+    <div class="profile">
+      <div [ngStyle]="{'background': userBackground}" class="background">
+        <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Post -->
+  <div class="postContent">
+    <!-- Meta info -->
+    <div class="meta">
+      <div>
+        <div (click)="openPreviewUserDialog()" class="previewUser">
+          <h1>{{post.user.name}}</h1>
+          <h1>@{{post.user.username}}</h1>
+        </div>
+        <span>{{postCreatedAt}}</span>
+      </div>
+      <span *ngIf="isAuthor">
+        <span (click)="openEditDialog()" class="editIcon material-icons">
+          edit
+        </span>
+      </span>
+    </div>
+    <!-- Content -->
+    <div class="content">
+      <span *ngIf="post.edited" class="editedContent">[EDITED]</span>
+      {{post.content}}
+    </div>
+    <!-- Icon bottom -->
+    <div class="postButtonGroup">
+
+      <!-- Liked -->
+      <div class="likeContainer" *ngIf="likedByUser; else notLikedByUser">
+        <span (click)="unlikePost()" class="material-icons liked">
+          favorite
+        </span>
+        <span *ngIf="likes === 1">
+          {{likes}} like
+        </span>
+        <span *ngIf="likes > 1">
+          {{likes}} likes
+        </span>
+      </div>
+      <!-- Not Liked -->
+      <ng-template #notLikedByUser>
+        <div class="likeContainer">
+          <span (click)="likePost()" class="material-icons">
+            favorite
+          </span>
+          <span *ngIf="likes === 1">
+            {{likes}} like
+          </span>
+          <span *ngIf="likes > 1">
+            {{likes}} likes
+          </span>
+        </div>
+      </ng-template>
+
+      <!-- Comment -->
+      <div class="commentContainer" *ngIf="commentedByUser; else notCommented">
+        <!-- Commented -->
+        <span (click)="openFullPostView()" class="material-icons commented">
+          chat
+        </span>
+        <span *ngIf="comments === 1">
+          {{comments}} comment
+        </span>
+        <span *ngIf="comments > 1">
+          {{comments}} comments
+        </span>
+      </div>
+      <!-- Not Commented -->
+      <ng-template #notCommented>
+        <div class="commentContainer">
+          <span (click)="openFullPostView()" class="material-icons">
+            chat
+          </span>
+          <span *ngIf="comments === 1">
+            {{comments}} comment
+          </span>
+          <span *ngIf="comments > 1">
+            {{comments}} comments
+          </span>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+
+  
+</div>

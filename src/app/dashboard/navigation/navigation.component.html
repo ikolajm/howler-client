@@ -1,0 +1,78 @@
+<div class="navigation">
+  <!-- Links -->
+  <div class="interactiveSection">
+    <!-- Profile -->
+    <div class="userContainer">
+
+      <!-- If there is a user profile photo -->
+      <div class="profile" *ngIf="hasProfilePicture; else avatarBackground">
+        <div class="photo">
+          <img src='{{user.avatarURL}}'  alt="Profile photo" />
+        </div>
+      </div>
+      <!-- If there is not use set background color -->
+      <ng-template #avatarBackground>
+        <div class="profile">
+          <div [ngStyle]="{'background': userBackground}" class="background">
+            <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+          </div>
+        </div>
+      </ng-template>
+
+      <div>
+        <h1 class='username'>{{ user.username }}</h1>
+        <button class="logout" (click)="logout()">Logout</button>
+        <button class="logoutIcon" (click)="logout()">
+          <span class="material-icons">
+            logout
+          </span>
+        </button>
+      </div>
+    </div>
+    <!-- Line Break -->
+    <hr />
+    <!-- Links -->
+    <div class="links">
+      <!-- Newsfeed -->
+      <a routerLink="/dashboard/newsfeed" routerLinkActive="active">
+        <span class="material-icons">
+          feed
+        </span>
+        <span>Newsfeed</span>
+      </a>
+      <!-- Likes -->
+      <a routerLink="/dashboard/likes" routerLinkActive="active">
+        <span class="material-icons">
+          favorite
+        </span>
+        <span>Likes</span>
+      </a>
+      <!-- Following -->
+      <a routerLink="/dashboard/following" routerLinkActive="active">
+        <span class="material-icons">
+          people_alt
+        </span>
+        <span>Following</span>
+      </a>
+      <!-- Profile -->
+      <a routerLink="{{profileLink}}" routerLinkActive="active">
+        <span class="material-icons">
+          account_box
+        </span>
+        <span>Profile</span>
+      </a>
+    </div>
+    <!-- Button -->
+    <button (click)="openDialog()" class="saySomething saySomethingText">Say Something!</button>
+    <button class="saySomething saySomethingIcon">
+      <span class="material-icons">
+        create
+      </span>
+    </button>
+  </div>
+  <!-- Chatter -->
+  <div class="brand">
+    <img src="../../../assets/images/monkeyLight.png" alt="Chatter Logo" />
+    <span>&copy; Chatter 2021</span>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<!-- Header with search and filter -->
+<div class="header">
+  <div class="filters">
+    <div class="textFilters">
+      <h1 (click)="modifyFilter(global)" [ngClass]="filterCheck(global)">Global</h1>
+      <h1 (click)="modifyFilter(following)" [ngClass]="filterCheck(following)">Following</h1>
+    </div>
+    <div class="iconFilters">
+      <span (click)="modifyFilter(global)" [ngClass]="filterCheck(global)" class="material-icons">
+        public
+      </span>
+      <span (click)="modifyFilter(following)" [ngClass]="filterCheck(following)" class="material-icons">
+        groups
+      </span>
+    </div>
+  </div>
+  <!-- <div class="search">
+    <form (ngSubmit)="searchPosts()">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text material-icons">search</span>
+        </div>
+        <input [(ngModel)]="search" name="search" type="text" class="form-control" aria-label="Search" placeholder="Search...">
+      </div>
+      <button type="submit" style="display: none;"></button>
+    </form>
+  </div> -->
+  <button id="backToTopButton" (click)="backToTop()">
+    Back to top 
+    <span class="material-icons">
+      arrow_upward
+      </span>
+  </button>
+</div>
+<div (scroll)="backToTopCheck()" class="newsfeed">
+
+  <!-- Loading -->
+  <div *ngIf="loading; else newsfeed">
+    <h1 class="loading-prefix">Retrieving Posts</h1>
+    <app-loading></app-loading>
+  </div>
+
+  <!-- Newsfeed -->
+  <ng-template #newsfeed>
+    <div class="data">
+      
+      <!-- Map posts -->
+      <div *ngFor="let post of data">
+        <app-post [post]="post"></app-post>
+      </div>
+
+    </div>
+  </ng-template>
+</div>

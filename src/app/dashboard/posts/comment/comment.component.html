@@ -1,0 +1,34 @@
+<div id="{{id}}" class="post comment">
+  <!-- Avatar -->
+  <div class="userContainer">
+    <div class="profile">
+      <div [ngStyle]="{'background': userBackground}" class="background">
+        <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Comment -->
+  <div class="postContent">
+    <!-- Meta info -->
+    <div class="meta">
+      <div>
+        <div (click)="openPreviewCommentUserDialog()" class="previewUser">
+          <h1>{{name}}</h1>
+          <h1>@{{username}}</h1>
+        </div>
+        <span>{{createdAt}}</span>
+      </div>
+      <span *ngIf="isAuthor">
+        <span (click)="openEditDialog()" class="editIcon material-icons">
+          edit
+        </span>
+      </span>
+    </div>
+    <!-- Content -->
+    <div class="content">
+      <span *ngIf="edited" class="editedContent">[EDITED]</span>
+      {{content}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+@import '~ngx-toastr/toastr';
+
+// Colors
+$white: #F5FEFF;
+$darkWhite: #c7c7c7;
+$darkerWhite: darken($darkWhite, 20%);
+$primary: #37A6B3;
+$darkPrimary: darken($primary, 20%);
+$light: #D7F6FA;
+$darkLight: darken($light, 20%);
+$lightThin: rgba(215, 246, 250, .7);
+$dark: #2C333A;
+$lightDark: lighten($dark, 20%);
+$success: #59E36D;
+$darkSuccess: darken($success, 20%);
+$error: #FA3A34;
+$darkError: darken($error, 20%);
+$pink: darken(#F6BDD1, 20%);
+$darkPink: darken($pink, 25%);
+
+.app {
+    font-family: 'Kanit', sans-serif;
+    background-color: $dark !important;
+}
+
+.loading-prefix {
+    text-align: center;
+    font-size: 2rem;
+}
+
+// Scrollbar
+::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #f5feff73;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	box-shadow: inset 0 0 4px rgba(0,0,0,.3);
+	background-color: $primary;
+}

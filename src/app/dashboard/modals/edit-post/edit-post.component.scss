@@ -1,0 +1,53 @@
+@import "../modals.scss";
+
+.mat-dialog-content {
+    padding: 0rem 1rem;
+    padding-top: 1rem;
+}
+
+.deletePost {
+    padding-top: 1rem;
+
+    span {
+        color: $white;
+        opacity: 0;
+        transition: .3s;
+    }
+
+    div {
+        padding: .5rem 0rem;
+
+        button {
+            background: $error;
+            transition: .3s;
+            outline: none;
+            border: none;
+            padding: .75rem .5rem;
+            border-radius: 3px;
+
+            &:hover {
+                background: $darkError;
+            }
+        }
+
+        .confirmationContainer {
+            opacity: 0;
+            transition: .3s;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+
+            button {
+
+                 &:last-of-type {
+                    background: $dark;
+                    margin-left: 10px;
+
+                    &:hover {
+                        color: $darkWhite;
+                    }
+                 }
+            }
+        }
+    }
+}

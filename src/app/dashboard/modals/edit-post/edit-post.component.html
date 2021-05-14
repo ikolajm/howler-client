@@ -1,0 +1,47 @@
+<!-- Head -->
+<h1 mat-dialog-title>Edit Post</h1>
+<!-- Body -->
+<div mat-dialog-content>
+  <!-- Content -->
+  <div class="form-group">
+    <span class="contentLabelGroup">
+      <label for="content">Post Content:</label>
+      <span>{{postContent.length}}/150</span>
+    </span>
+    <textarea [(ngModel)]="postContent" class="form-control"></textarea>
+  </div>
+  <!-- Who can see -->
+  <div class="privacyOptions">
+    <h1>Who can see this post?</h1>
+    <div class="buttons">
+      <div (click)="modifyPrivacy(public)" [ngClass]="checkPrivacy(public)">
+        <span class="material-icons">
+          public
+          </span>
+          <span>Everyone</span>
+      </div>
+      <div (click)="modifyPrivacy(following)" [ngClass]="checkPrivacy(following)">
+        <span class="material-icons">
+          groups
+          </span>
+          <span>Followers</span>
+      </div>
+    </div>
+  </div>
+  <!-- Delete the post -->
+  <div class="deletePost">
+    <span id="areYouSure">Are you sure?</span>
+    <div>
+      <button (click)="revealDeleteConfirmation()">Delete this post.</button>
+      <div class="confirmationContainer">
+        <button class="confirmationButton" disabled="disabled" (click)="confirmDelete()">Yes, delete</button>
+        <button class="confirmationButton" disabled="disabled" (click)="cancelDelete()">No, cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div mat-dialog-actions>
+  <button (click)="close()" class="cancelButton">Cancel</button>
+  <button (click)="saveEdit()" class="confirmButton">Save Changes</button>
+</div>

@@ -1,0 +1,29 @@
+<!-- Head -->
+<h1 mat-dialog-title>Edit Comment</h1>
+<!-- Body -->
+<div mat-dialog-content>
+  <!-- Content -->
+  <div class="form-group">
+    <span class="contentLabelGroup">
+      <label for="content">Comment Content:</label>
+      <span>{{content.length}}/100</span>
+    </span>
+    <textarea [(ngModel)]="content" class="form-control"></textarea>
+  </div>
+  <!-- Delete the post -->
+  <div class="deletePost">
+    <span id="areYouSure">Are you sure?</span>
+    <div>
+      <button (click)="revealDeleteConfirmation()">Delete this comment.</button>
+      <div class="confirmationContainer">
+        <button class="confirmationButton" disabled="disabled" (click)="confirmDelete()">Yes, delete</button>
+        <button class="confirmationButton" disabled="disabled" (click)="cancelDelete()">No, cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div mat-dialog-actions>
+  <button (click)="close()" class="cancelButton">Cancel</button>
+  <button (click)="submitEdit()" class="confirmButton">Save Changes</button>
+</div>

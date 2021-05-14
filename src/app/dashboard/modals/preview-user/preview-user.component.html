@@ -1,0 +1,59 @@
+<div class="previewUser">
+  <!-- Head -->
+  <h1 mat-dialog-title>View <span>@{{user.username}}</span></h1>
+  <!-- Body -->
+  <div mat-dialog-content>
+    <!-- Content -->
+    <div class="previewUserContent">
+      <div class="avatarContainer">
+        <!-- Avatar -->
+        <div class="profile">
+          <div [ngStyle]="{'background': user.userBackground}" class="background">
+            <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+          </div>
+        </div>
+        <!-- Follow/Following -->
+        <div *ngIf="!isUser">
+          <button *ngIf="user.isFollowing; else follow" (click)="unFollowUser()" class="profileActionButton">
+            Following
+            <span class="material-icons">
+              done
+            </span>
+          </button>
+          <ng-template #follow>
+            <button (click)="followUser()" class="profileActionButton">
+              Follow
+              <span class="material-icons">
+                add
+              </span>
+            </button>
+          </ng-template>
+        </div>
+      </div>
+      <!-- Name/Username -->
+      <div class="userInfo">
+        <h1>{{user.name}}</h1>
+        <h1>@{{user.username}}</h1>
+      </div>
+      <!-- Post/Follower Count -->
+      <div>
+        <span *ngIf="user.postCount === 1">
+          {{user.postCount}} post
+        </span>
+        <span *ngIf="user.postCount > 1">
+          {{user.postCount}} posts
+        </span>
+        <span *ngIf="user.postCount === 0">
+          0 posts
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+  <div mat-dialog-actions>
+    <!-- Close -->
+    <button (click)="close()" class="cancelButton">Close</button>
+    <!-- View Profile -->
+    <button (click)="close()" routerLink="{{routerlink}}" class="profileActionButton">View profile</button>
+  </div>
+</div>

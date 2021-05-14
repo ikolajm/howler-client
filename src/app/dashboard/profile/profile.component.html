@@ -1,0 +1,89 @@
+<div class="profile-container">
+  <!-- Loading -->
+  <div class="loading-container" *ngIf="loading && user != null; else profile">
+    <h1 class="loading-prefix">Retrieving User Profile</h1>
+    <app-loading></app-loading>
+  </div>
+
+  <ng-template #profile>
+    <!-- Sticky Return Section -->
+    <div class="header">
+      <div class="backButton">
+        <a routerLink="/dashboard/newsfeed">
+          <span class="material-icons">
+            arrow_back
+          </span>
+          <span>Go back</span>
+        </a>
+      </div>
+      <button id="backToTopButton" (click)="backToTop()">
+        Back to top 
+        <span class="material-icons">
+          arrow_upward
+          </span>
+      </button>
+    </div>
+    <div class="scrollableContent" (scroll)="backToTopCheck()">
+      <div class="profileContent">
+        <div class="userContainer">
+          <div>
+            <!-- Profile Photo -->
+            <div class="profile">
+              <div [ngStyle]="{'background': user.userBackground}" class="background">
+                <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+              </div>
+            </div>
+            <!-- Edit Profile/Follow || Following -->
+            <div class="profileButtonContainer">
+              <!-- Edit Button -->
+              <button (click)="openEditProfileDialog()" class="profileActionButton" *ngIf="user.isAuthUser; else followBlock">
+                Edit Profile 
+                <span class="editIcon material-icons">
+                  edit
+                </span>
+              </button>
+              <!-- Template => Follow/Following -->
+              <ng-template #followBlock>
+                <button class="profileActionButton"  *ngIf="user.followingUser; else followUser">
+                  Following
+                  <span class="material-icons">
+                    done
+                  </span>
+                </button>
+                <ng-template #followUser>
+                  <button class="profileActionButton" >
+                    Follow
+                    <span class="material-icons">
+                      add
+                    </span>
+                  </button>
+                </ng-template>
+              </ng-template>
+            </div>
+          </div>
+          <div class="userNameDetails">
+            <!-- Name -->
+            <h1>{{user.name}}</h1>
+            <!-- Username -->
+            <h1>@{{user.username}}</h1>
+          </div>
+          <!-- Post and follower count -->
+          <div class="metaInfo">
+            <span>{{user.postCount}} Posts</span>
+            <span>{{user.followCount}} Followers</span>
+          </div>
+        </div>
+  
+      </div>
+      <!-- Post Feed -->
+      <div class="data">
+          
+        <!-- Map posts -->
+        <div *ngFor="let post of postData">
+          <app-post [post]="post"></app-post>
+        </div>
+    
+      </div>
+    </div>
+  </ng-template>
+</div>

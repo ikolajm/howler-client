@@ -1,0 +1,153 @@
+@import "../app.component.scss";
+
+.auth {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("/../../assets/images/howlersbw.jpg");
+    background-size: cover;
+
+    .overlay {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background: $lightThin;
+    }
+
+    .container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .row {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .content h1 {
+        // font-weight: bold;
+    }
+
+    .content h1, form {
+        position: relative;
+        z-index: 2;
+    }
+
+    form {
+        background: $dark;
+        border-radius: 5px;
+        padding: 2rem;
+        color: $white;
+
+        .brand {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            img {
+                width: 100px;
+                height: 100px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .form-group:last-of-type {
+            margin-bottom: 0rem;
+        }
+
+        img {
+            width: 150px;
+        }
+
+        label {
+            font-weight: normal;
+        }
+
+        h1 {
+            color: $white;
+            margin: .5rem 0rem;
+            // font-weight: bold;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background: $primary;
+            color: $white;
+            // font-weight: bold;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            padding: .75rem .5rem;
+            margin: 2rem 0rem;
+            transition: .3s;
+
+            &:hover {
+                color: $darkWhite;
+                background: $darkPrimary;
+            }
+        }
+
+        .spanContainer {
+            display: block;
+            text-align: right;
+            span {
+                color: $white;
+                cursor: pointer;
+                transition: .3s;
+                &:hover {
+                    color: $darkWhite;
+                }
+            }
+        }
+
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .auth {
+        .row {
+            display: block;
+        }
+        
+        .content {
+            display: none;
+        }
+    } 
+}
+
+@media screen and (max-width: 600px) {
+    // .brand {
+    //     img {
+    //         width: 100px !important;
+    //         height: 100px !important;
+    //     }
+
+    //     h1 {
+    //         font-size: 2rem;
+    //     }
+    // }
+
+    form {
+        label {
+            font-size: 1.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 5px;
+        }
+
+        input {
+            height: 30px;
+        }
+    }
+}

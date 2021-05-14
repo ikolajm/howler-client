@@ -1,0 +1,93 @@
+<div class="auth">
+  <div class="overlay"></div>
+
+  <div class="container">
+
+    <div class="row">
+      <!-- Text content -->
+      <div class="content col-md-6">
+        <h1>A twitter clone so simple</h1>
+        <h1>A monkey could use it</h1>
+      </div>
+
+      <!-- Login -->
+      <div class="col-md-6" *ngIf="showLogin; else signupTemplate">
+
+        <form #loginForm="ngForm" (ngSubmit)="login()">
+          <div class="brand">
+            <!-- Logo -->
+            <img src="../../assets/images/monkeyLight.png" alt="Howler Logo"/>
+            <!-- Title -->
+            <h1>Howler</h1>
+          </div>
+          <!-- Email -->
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input [(ngModel)]="user.username" type="text" class="form-control" id="username" name="username" />
+          </div>
+          <!-- Password -->
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password" />
+          </div>
+          <!-- Submit -->
+          <button type="submit">Submit</button>
+          <!-- Login/Signup Toggle -->
+          <div class="spanContainer">
+            <span (click)="toggleForm()">Don't have an account?</span>
+          </div>
+        </form>
+
+      </div>
+
+      <!-- Signup -->
+      <ng-template #signupTemplate>
+        <div class="col-md-6">
+
+          <form #signupForm="ngForm" (ngSubmit)="signup()">
+            <div class="brand">
+              <!-- Logo -->
+              <img src="../../assets/images/monkeyLight.png" alt="Howler Logo"/>
+              <!-- Title -->
+              <h1>Howler</h1>
+            </div>
+            <!-- Name -->
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input [(ngModel)]="user.name" type="text" class="form-control" id="name" name="name" />
+            </div>
+            <!-- Username -->
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input [(ngModel)]="user.username" type="text" class="form-control" id="username" name="username" />
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input [(ngModel)]="user.email" type="email" class="form-control" id="email" name="email" />
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password" />
+            </div>
+            <!-- Confirm Password -->
+            <div class="form-group">
+              <label for="confirm">Confirm Password:</label>
+              <input [(ngModel)]="user.confirm" type="password" class="form-control" id="confirm" name="confirm" />
+            </div>
+            <!-- Submit -->
+            <button type="submit">Submit</button>
+            <!-- Login/Signup Toggle -->
+            <div class="spanContainer">
+              <span (click)="toggleForm()">Already have an account?</span>
+            </div>
+          </form>
+
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+
+</div>

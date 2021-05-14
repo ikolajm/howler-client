@@ -1,0 +1,107 @@
+<!-- Head -->
+<h1 mat-dialog-title>Edit Profile</h1>
+<!-- Body -->
+<div mat-dialog-content>
+    <div class="form-group">
+      <span class="contentLabelGroup">
+        <label>Avatar Background:</label>
+      </span>
+      <div class="avatarContainer">
+        <!-- Profile -->
+        <div class="profile">
+          <div [ngStyle]="{'background': userBackground}" class="background">
+            <img src="../../../assets/images/monkeyLight.png"  alt="Profile picture placeholder" />
+          </div>
+        </div>
+        <!-- Selection Grid -->
+        <div class="colorPalette">
+          <!-- Row -->
+          <div class="paletteRow">
+            <!-- Red -->
+            <div
+              [ngStyle]="{'background': red}"
+              class="colorItem"
+              (click)="setNewBackground('#F24951')"
+            >
+            <span *ngIf="isActiveColor('#F24951')" class="material-icons">
+              done
+            </span>
+          </div>
+            <!-- Green -->
+            <div
+              [ngStyle]="{'background': green}"
+              class="colorItem"
+              (click)="setNewBackground('#65F088')"
+            >
+            <span *ngIf="isActiveColor('#65F088')" class="material-icons">
+              done
+            </span>
+          </div>
+            <!-- Blue -->
+            <div
+              [ngStyle]="{'background': blue}"
+              class="colorItem"
+              (click)="setNewBackground('#6464ED')"
+            >
+            <span *ngIf="isActiveColor('#6464ED')" class="material-icons">
+              done
+            </span>
+          </div>
+          </div>
+          <!-- Row -->
+          <div class="paletteRow">
+            <!-- Pink -->
+            <div
+              [ngStyle]="{'background': pink}"
+              class="colorItem"
+              (click)="setNewBackground('#F07E84')"
+            >
+            <span *ngIf="isActiveColor('#F07E84')" class="material-icons">
+              done
+            </span>
+          </div>
+            <!-- Orange -->
+            <div
+              [ngStyle]="{'background': orange}"
+              class="colorItem"
+              (click)="setNewBackground('#F59D5A')"
+            >
+            <span *ngIf="isActiveColor('#F59D5A')" class="material-icons">
+              done
+            </span>
+          </div>
+            <!-- Purple -->
+            <div
+              [ngStyle]="{'background': purple}"
+              class="colorItem"
+              (click)="setNewBackground('#CC71F0')"
+            >
+            <span *ngIf="isActiveColor('#CC71F0')" class="material-icons">
+              done
+            </span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Name (maxlength 26 chars min 1) -->
+    <div class="form-group">
+      <span class="contentLabelGroup">
+        <label for="name">Name:</label>
+        <span>{{name.length}}/26</span>
+      </span>
+      <input [(ngModel)]="name" type="text" class="form-control" id="name" name="name" />
+    </div>
+    <!-- Username (maxlength 16 chars min 3) -->
+    <div class="form-group">
+      <span class="contentLabelGroup">
+        <label for="username">Username:</label>
+        <span>{{username.length}}/16</span>
+      </span>
+      <input [(ngModel)]="username" type="text" class="form-control" id="username" name="username" />
+    </div>
+</div>
+<!-- Footer -->
+<div mat-dialog-actions>
+  <button (click)="close()" class="cancelButton">Cancel</button>
+  <button (click)="saveEdit()" class="confirmButton">Save Changes</button>
+</div>
