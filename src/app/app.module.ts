@@ -27,6 +27,7 @@ import { ViewPostComponent } from './dashboard/modals/view-post/view-post.compon
 import { CommentComponent } from './dashboard/posts/comment/comment.component';
 import { EditCommentComponent } from './dashboard/modals/edit-comment/edit-comment.component';
 import { LikesComponent } from './dashboard/likes/likes.component';
+import getTokenFromSessionStorage from "./helpers/getTokenFromSessionStorage";
 
 @NgModule({
   declarations: [
@@ -56,9 +57,7 @@ import { LikesComponent } from './dashboard/likes/likes.component';
     BrowserAnimationsModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return sessionStorage.getItem("token");
-        },
+        tokenGetter: getTokenFromSessionStorage
       }
     }),
     MatDialogModule,
