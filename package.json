@@ -2,7 +2,7 @@
   "name": "howler-client",
   "version": "0.0.0",
   "engines": {
-    "node": "12.x"
+    "node": "12.13.0"
   },
   "scripts": {
     "ng": "ng",
