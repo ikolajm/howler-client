@@ -57,15 +57,14 @@ import { LikesComponent } from './dashboard/likes/likes.component';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return sessionStorage.getItem('token');
+          return sessionStorage.getItem("token");
         },
-        // whitelistedDomains: ['localhost:5000']
       }
     }),
     MatDialogModule,
     ToastrModule.forRoot({
       timeOut: 3000,
-      positionClass: 'toast-bottom-center',
+      positionClass: "toast-bottom-center",
       preventDuplicates: true,
     }),
   ],
