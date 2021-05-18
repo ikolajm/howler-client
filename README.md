@@ -1,6 +1,5 @@
-# HowlerClient
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.4.
+# To view the API code
+Follow this link: https://github.com/ikolajm/Howler_API
 
 ## Development server
 
